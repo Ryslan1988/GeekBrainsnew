@@ -13,7 +13,10 @@ public class HomeWorkApp {
         System.out.println("Orange ");
         System.out.println("Banana ");
         System.out.println("Apple ");
-        System.out.println("Nothing");
+        System.out.println("sad ");
+        System.out.println("saasd");
+
+
 
     }
 
