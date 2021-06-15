@@ -1,18 +1,19 @@
 package hw1;
-
+// добавление в пул не до конца разобрался, извините
 public class HomeWorkApp {
     public static void main(String[] args) {
 
         printThreeWords();
         checkSumSign(2, 5);
-        printColor(15);
-        compareNumbers(2,7);
+        printColor(17);
+        compareNumbers(2, 8);
     }
 
     public static void printThreeWords() {
         System.out.println("Orange ");
         System.out.println("Banana ");
         System.out.println("Apple ");
+        System.out.println("Nothing");
 
     }
 
