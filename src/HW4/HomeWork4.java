@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class HomeWork4 {
-    static final int SIZE = 5;
-    static final int WIN = 3;
+    static final int SIZE = 7;
+    static final int WIN = 4;
 
     static final char DOTE_X = 'X';
     static final char DOTE_0 = '0';
@@ -91,8 +91,9 @@ public class HomeWork4 {
             y = random.nextInt(SIZE);
             x = random.nextInt(SIZE);
         } while (!isCellValid(y, x));
-        field[y][x] = DOTE_0;
-
+        if (botWin(DOTE_X)) {
+            field[y][x] = DOTE_0;
+        }
     }
 
 
@@ -117,15 +118,24 @@ public class HomeWork4 {
     public static boolean checkWin(char c) {
 
         for (int i = 0; i < WIN; i++) {
-            if (field[i][0] == c && field[i][1] == c && field[i][2] == c ||
-                    field[0][i] == c && field[1][i] == c && field[2][i] == c) {
-                return true;
+            for (int j = 0; j < WIN; j++) {
+                if (field[i][j] == c && field[i][j + 1] == c && field[i][j + 2] == c && field[i][j + 3] == c ||
+                        field[j][i] == c && field[j + 1][i] == c && field[j + 2][i] == c && field[j + 3][i] == c) {
+                    return true;
 
-            } else if (field[0][0] == c && field[1][1] == c && field[2][2] == c ||
-                    field[2][0] == c && field[1][1] == c && field[0][2] == c) {
-                return true;
+                } else if (field[i][j] == c && field[i + 1][j + 1] == c && field[i + 2][j + 2] == c && field[i + 3][j + 3] == c ||
+                        field[i + 2][j] == c && field[i + 1][j + 1] == c && field[i][j + 2] == c && field[i][j + 3] == c) {
+
+
+//                if (field[i][j] == c && field[i][j + 1] == c && field[i][j + 2] == c ||
+//                        field[j][i] == c && field[j + 1][i] == c && field[j + 2][i] == c) {
+//                    return true;
+//
+//                } else if (field[i][j] == c && field[i+1][j+1] == c && field[i+2][j+2] == c ||
+//                        field[i+2][j] == c && field[i+1][j+1] == c && field[i][j+2] == c) {
+                    return true;
+                }
             }
-        }
 
 //        if (field[0][0] == c && field[0][1] == c && field[0][2] == c) {
 //            return true;
@@ -152,10 +162,33 @@ public class HomeWork4 {
 //        }
 //        if (field[0][2] == c && field[1][1] == c && field[2][0] == c) {
 //            return true;
-//        }
+        }
+        return false;
+    }
+
+
+    public static boolean botWin(char a) {
+        for (int i = 0; i < WIN; i++) {
+            for (int j = 0; j < WIN; j++) {
+                if (field[i][j] == a) {
+                    if (field[i][j] == a && field[i][j + 2] == a || field[i][j + 1] == a && field[i][j + 3] == a ||
+                            field[j][i] == a && field[j + 2][i] == a || field[j + 1][i] == a && field[j + 3][i] == a) {
+                        return true;
+                    } else if (field[i][j] == a && field[i + 2][j + 2] == a || field[i + 1][j + 1] == a && field[i + 3][j + 3] == a ||
+                            field[i + 2][j] == a && field[i][j + 2] == a || field[i + 1][j + 1] == a && field[i][j + 3] == a) {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 }
+
+
+
+
+
 
 
 
